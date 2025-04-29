@@ -1,5 +1,6 @@
 import requests
 import logging
+from typing import List, Dict
 
 logger = logging.getLogger(__name__)
 
@@ -9,8 +10,9 @@ class AlphaVantageAPI:
     def __init__(self, api_key: str, interval: str = "1min"):
         self.api_key = api_key
         self.interval = interval
+        self.session = requests.Session()
 
-    def get_intraday_stock_data(self, symbol: str):
+    def get_intraday_stock_data(self, symbol: str) -> List[Dict]:
         """
         Fetch intraday time series data with timestamp.
 
@@ -28,9 +30,15 @@ class AlphaVantageAPI:
         }
 
         try:
-            response = requests.get(self.BASE_URL, params=params)
+            response = self.session.get(self.BASE_URL, params=params)
+            response.raise_for_status()  # Raise an error for bad responses
             data = response.json()
             key = f'Time Series ({self.interval})'
+
+            if 'Note' in data or 'Error Message' in data or key not in data:
+                logger.error("API call limit reached or invalid symbol.")
+                raise ValueError("Invalid API response or rate limit exceeded.")
+            
             time_series = data[key]
 
             records = [
@@ -47,10 +55,9 @@ class AlphaVantageAPI:
             ]
             logger.info(f"Fetched {len(records)} records for symbol: {symbol.upper()}")
             return records
-
-        except KeyError:
-            logger.error("Invalid API response or rate limit exceeded.")
-            raise ValueError("Invalid API response or rate limit exceeded.")
+        except requests.exceptions.RequestException as e:
+            logger.error(f"Request failed: {e}")
+            raise ConnectionError(f"Request failed: {e}")
         except Exception as e:
             logger.error(f"Error fetching data: {e}")
             raise ConnectionError(f"Error fetching data: {e}")

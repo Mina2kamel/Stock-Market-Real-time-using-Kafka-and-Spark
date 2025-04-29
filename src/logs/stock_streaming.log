@@ -1,0 +1,10 @@
+2025-04-29 10:42:48,584 - database.mysql_manager - INFO - SQLAlchemy engine created successfully.
+2025-04-29 10:42:48,597 - database.mysql_handler - INFO - Tables created successfully or already exist.
+2025-04-29 10:42:49,547 - api.api - INFO - Fetched 100 records for symbol: IBM
+2025-04-29 10:42:49,822 - database.mysql_handler - INFO - 100 records merged successfully (batch 1).
+2025-04-29 10:42:49,823 - database.mysql_manager - INFO - Session closed.
+2025-04-29 10:44:35,499 - database.mysql_manager - INFO - SQLAlchemy engine created successfully.
+2025-04-29 10:44:35,589 - database.mysql_handler - INFO - Tables created successfully or already exist.
+2025-04-29 10:44:36,124 - api.api - INFO - Fetched 100 records for symbol: IBM
+2025-04-29 10:44:36,374 - database.mysql_handler - INFO - 100 records merged successfully (batch 1).
+2025-04-29 10:44:36,379 - database.mysql_manager - INFO - Session closed.
