@@ -6,10 +6,8 @@ services:
     container_name: mysql
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: rootpassword
       MYSQL_DATABASE: stocks
-      MYSQL_USER: stockuser
-      MYSQL_PASSWORD: stockpass
+      MYSQL_ROOT_PASSWORD: stockpass
     ports:
       - "3306:3306"
     volumes:
@@ -36,6 +34,8 @@ services:
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
       KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_DELETE_TOPIC_ENABLE: "true"
+
     ports:
       - "9092:9092"
 

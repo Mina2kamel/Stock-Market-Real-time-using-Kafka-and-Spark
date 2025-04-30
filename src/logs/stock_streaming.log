@@ -8,3 +8,9 @@
 2025-04-29 10:44:36,124 - api.api - INFO - Fetched 100 records for symbol: IBM
 2025-04-29 10:44:36,374 - database.mysql_handler - INFO - 100 records merged successfully (batch 1).
 2025-04-29 10:44:36,379 - database.mysql_manager - INFO - Session closed.
+2025-04-30 09:54:58,444 - database.mysql_manager - INFO - SQLAlchemy engine created successfully.
+2025-04-30 09:54:58,462 - database.mysql_handler - ERROR - Error creating tables: (mysql.connector.errors.ProgrammingError) 1045 (28000): Access denied for user 'stockuser'@'172.23.0.1' (using password: YES)
+(Background on this error at: https://sqlalche.me/e/14/f405)
+2025-04-30 09:56:09,226 - database.mysql_manager - INFO - SQLAlchemy engine created successfully.
+2025-04-30 09:56:09,231 - database.mysql_handler - ERROR - Error creating tables: (mysql.connector.errors.ProgrammingError) 1045 (28000): Access denied for user 'stockuser'@'172.23.0.1' (using password: YES)
+(Background on this error at: https://sqlalche.me/e/14/f405)

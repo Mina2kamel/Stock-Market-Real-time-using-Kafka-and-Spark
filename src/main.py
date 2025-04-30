@@ -11,7 +11,7 @@ def main():
     db_handler = MySQLHandler()
 
     # Fetch stock data
-    records = api.get_intraday_stock_data(symbol='IBM')
+    records = api.get_intraday_stock_data(symbol='TSLA')
 
     try:
         db_handler.batch_merge(records=records, model=StockModel)
